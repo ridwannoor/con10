@@ -140,7 +140,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
         // $blog = Blog::where('id','=',$request->id)->update([
@@ -149,8 +149,15 @@ class BlogController extends Controller
         //     'categorie_id' => $request->categorie_id
         // ]);
 
-        $blog = Blog::find($id);
-        dd($blog);
+        $blog = Blog::where('id',$request->id)->first();
+        $blog->title = $request->input('title');
+        $blog->content = $request->input('content');
+        $blog->categorie_id = $request->input('categorie_id');
+        $blog->save();
+
+        $blog->tags()->sync($request->tags);
+
+        // dd($blog);
         
         // $blog->tags()->sync($request->tags);
         // if (isset($request->tags)) {
