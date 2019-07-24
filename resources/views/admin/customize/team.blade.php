@@ -3,7 +3,7 @@
 @section('content-wrapper')
 <div id="content-wrapper" class="content-wrapper view view-account">
     <div class="container-fluid">
-        <h2 class="view-title">Slider</h2>
+        <h2 class="view-title">Team</h2>
         <div class="row">
             <div class="module-wrapper col-12">
                 <section class="module">
@@ -29,21 +29,22 @@
                         </div>
                         
                         <div class="content-panel">
-                            <h2 class="title">Slider<span class="pro-label badge badge-warning">PRO</span></h2>
+                            <h2 class="title">Team<span class="pro-label badge badge-warning">PRO</span></h2>
                             <form class="user-form">
                                    
                                 
                                 <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Slider</h3>
-                                   <p><a href="/admin/slider/add" class="btn btn-primary">Tambah</a></p> 
+                                    <h3 class="fieldset-title">Team</h3>
+                                   <p><a href="/admin/team/add" class="btn btn-primary">Tambah</a></p> 
                                     <div class="table-responsive">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
+                                                        <th scope="col">Name</th>
                                                         <th scope="col">Title</th>
-                                                        <th scope="col">Deskripsi</th>
                                                         <th scope="col">Image</th>
+                                                        <th scope="col">Publish</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -51,15 +52,16 @@
                                                     $no = 1 ;
                                                 @endphp
                                                 <tbody>
-                                                    @foreach ($sliders as $slide)    
+                                                    @foreach ($team as $t)    
                                                     <tr>
                                                         <th scope="row">{{ $no++ }}</th>
-                                                        <td>{{ $slide->title }}</td>
-                                                        <td>{{ $slide->deskripsi }}</td>
-                                                        <td> <img class="rounded img-fluid" src="{{ asset('/storage/admin/slider/'.$slide->image)}}" width="150px" alt="" /></td>
+                                                        <td>{{ $t->name }}</td>
+                                                        <td>{{ $t->title }}</td>
+                                                        <td>{{ $t->is_publish }}</td>
+                                                        <td> <img class="rounded img-fluid" src="{{ asset('/storage/admin/team/'.$t->image)}}" width="150px" alt="" /></td>
                                                         <td>
-                                                            <a href="/admin/slider/edit/{{$slide->id}}" class="btn btn-default">Edit</a>
-                                                            <a href="/admin/slider/destroy/{{$slide->id}}" class="btn btn-danger">Hapus</a>
+                                                            <a href="/admin/team/edit/{{$t->id}}" class="btn btn-default">Edit</a>
+                                                            <a href="/admin/team/destroy/{{$t->id}}" class="btn btn-danger">Hapus</a>
                                                         </td>
                                                     </tr>  
                                                     @endforeach                                                 

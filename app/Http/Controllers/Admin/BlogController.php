@@ -60,18 +60,43 @@ class BlogController extends Controller
         //     'categorie_id' => $request->categorie_id, 
         // ]);
 
-        $blog = new Blog();
-        $blog->title = $request->title;
-        $blog->content = $request->content;
-        $blog->categorie_id = $request->categorie_id;
-        $blog->save();
-      
-        // $id = $request->input('tags');
-        // $tags = Tag::find($id);
-        // $blog->tags()->attach($tags);
-        $blog->tags()->sync($request->tags, false);
+        if (!$file = $request->file('image')) {
+            $blog = new Blog();
+            $blog->title = $request->title;
+            $blog->content = $request->content;
+            $blog->categorie_id = $request->categorie_id;
+            $blog->save();    
+            $blog->tags()->sync($request->tags, false);
 
-        return redirect('/admin/blog');
+            return redirect('/admin/blog');
+        } 
+        else {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = $request->id.time().".".$ext;
+            $request->file('image')->storeAs('public/admin/blog', $filename);
+
+            $blog = new Blog();
+            $blog->title = $request->title;
+            $blog->content = $request->content;
+            $blog->image = $filename;
+            $blog->categorie_id = $request->categorie_id;
+            $blog->save();    
+            $blog->tags()->sync($request->tags, false);
+
+            return redirect('/admin/blog');
+        }
+        
+        // $blog = new Blog();
+        // $blog->title = $request->title;
+        // $blog->content = $request->content;
+        // $blog->categorie_id = $request->categorie_id;
+        // $blog->save();
+      
+        
+        // $blog->tags()->sync($request->tags, false);
+
+        // return redirect('/admin/blog');
     }
 
     /**
@@ -149,81 +174,42 @@ class BlogController extends Controller
         //     'categorie_id' => $request->categorie_id
         // ]);
 
-        $blog = Blog::where('id',$request->id)->first();
-        $blog->title = $request->input('title');
-        $blog->content = $request->input('content');
-        $blog->categorie_id = $request->input('categorie_id');
-        $blog->save();
+        if (!$file = $request->file('image')) {
+            $blog = Blog::where('id',$request->id)->first();
+            $blog->title = $request->input('title');
+            $blog->content = $request->input('content');
+            $blog->categorie_id = $request->input('categorie_id');
+            $blog->save();
+            $blog->tags()->sync($request->tags);
 
-        $blog->tags()->sync($request->tags);
-
-        // dd($blog);
-        
-        // $blog->tags()->sync($request->tags);
-        // if (isset($request->tags)) {
+            return redirect('/admin/blog');
+        } 
+        else {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = $request->id.time().".".$ext;
+            $request->file('image')->storeAs('public/admin/blog', $filename);
             
-        // } else {
-        //     $blog->tags()->sync(array());
-        // }
+            $blog = Blog::where('id',$request->id)->first();
+            $blog->title = $request->input('title');
+            $blog->content = $request->input('content');
+            $blog->image = $filename;
+            $blog->categorie_id = $request->input('categorie_id');
+            $blog->save();
+            $blog->tags()->sync($request->tags);
 
-        // $blog = Blog::where('id','=', $id)->first();
-        // $tagsId =  $blog->tags->pluck('id');
-       
-        // $tagsId = $blog->tags()->sync($request->tags);
-        // dd($tagsId);
-        //  $blog->tags()->sync($tagsId);
-        // $blog->tags()->sync($request->tags, false);
-
-        // $tagsId = collect($request->tags)->map(function($tag) {
-        //     return Tag::firstOrCreate(['name' => $tag])->id;
-        // });
-        // $tagsId = $request->get('tags');
-
-        // $blog->tags()->sync($request->input('tag_id'));
-
-        // $blog = Blog::find($id);
-        // dd($blog);
+            return redirect('/admin/blog');
+        }
+        
+        // $blog = Blog::where('id',$request->id)->first();
         // $blog->title = $request->input('title');
         // $blog->content = $request->input('content');
         // $blog->categorie_id = $request->input('categorie_id');
         // $blog->save();
 
-        // if (isset($request->tags)) {
-        //     $blog->tags()->sync($request->tags);
-        // } 
-        // else {
-        //     $blog->tags()->sync(array());
-        // }
+        // $blog->tags()->sync($request->tags);
 
-        // $tag = $request->tag_id;
-
-        // $tags = Tag::where($tag)->pluck('name');
-        // $blogs = $blogs->tags()->sync($tags);
-        // dd($tag);
-        // $blogs->tags()->sync($request->input('tag_id'));
-        // $tags = Tag::all();
-        // $blogs->tags->sync($request->tag);
-
-        // $blogs->title = $request->input('title');
-        // $blogs->content = $request->input('content');
-        // $blogs->categorie_id = $request->input('categorie_id');
-        // $blogs->save();
-
-        
-        // $id = $request->input('tag_id');
-        // $tags = Tag::find($id);
-        // $blogs->tags()->attach($tags);
-
-        // if (isset($request->tags)) {
-        //     $blogs->tags->sync($request->tags);
-        // }
-        //  else {
-        //     $blogs->tags->sync(array());
-        // }
-
-        // $blogs->tags()->sync((array)$request->input('tag_id'));
-         
-        return redirect('/admin/blog');
+        // return redirect('/admin/blog');
     }
 
     /**

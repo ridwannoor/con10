@@ -47,52 +47,52 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/topbar">
                                 <span class="nav-label">Topbar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/slider">
                                 <span class="nav-label">Slider</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/feature">
                                 <span class="nav-label">Feature</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/services">
                                 <span class="nav-label">Services</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/team">
                                 <span class="nav-label">Team</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/pricing">
                                 <span class="nav-label">Pricing</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/works">
                                 <span class="nav-label">Works</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/testimonial">
                                 <span class="nav-label">Testimonial</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/blog">
                                 <span class="nav-label">Blog</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/admin/contact">
                                 <span class="nav-label">Contact</span>
                             </a>
                         </li>

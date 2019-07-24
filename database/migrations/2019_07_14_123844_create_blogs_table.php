@@ -17,6 +17,7 @@ class CreateBlogsTable extends Migration
             $table->bigIncrements('id');            
             $table->string('title');
             $table->text('content')->nullable();
+            $table->string('image')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('categorie_id')->unsigned();
             $table->boolean('is_published')->default(false);

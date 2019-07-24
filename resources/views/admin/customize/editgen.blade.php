@@ -46,8 +46,7 @@
                                
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />                                       
                                 <input type="hidden" name="id" value="{{$gen->id}}" />  
-                                 <input type="hidden" name="_method" value="PUT" /> 
-                                    
+                                 <input type="hidden" name="_method" value="PUT" />                                     
                                         
                                     
                                     <fieldset class="fieldset mb-3">

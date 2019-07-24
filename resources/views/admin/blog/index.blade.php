@@ -51,29 +51,38 @@
                                                 <td><span class="btn btn-xs btn-default">{{ $b->tags->implode('name', ', ') }}</span></td>
                                                 <td>{{ $b->published }}</td>
                                                 <td>
-                                                @if (Auth::user()->is_admin)
-                                                @php
-                                                    if($b->published == 'Yes') {
-                                                        $label = 'Draft';
-                                                    } else {
-                                                        $label = 'Publish';
-                                                    }
-                                                @endphp    
-                                                {{-- <form action="/admin/blog/publish" method="POST">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                    <input type="hidden" name="id" value="{{$b->id}}" />
-                                                    {{ method_field('put') }}
-                                                    <button class="btn btn-xs btn-warning">{{ $label }}</button>
-                                                    {{-- <a href="/admin/blog/publish" data-method="PUT" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-warning">{{ $label }}</a> --}}
-                                                {{-- </form>     --}} 
-                                                {{-- <input name="_method" type="hidden" value="PUT">     
-                                                <input type="hidden" name="id" value="{{$b->id}}" /> 
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />                                  --}}
-                                                <a href="/admin/blog/publish/{{ $b->id }}"  class="btn btn-xs btn-warning">{{ $label }}</a>
-                                                @endif
-                                                    <a href="/admin/blog/show/{{ $b->id }}" class="btn btn-xs btn-success">show</a>
-                                                    <a href="/admin/blog/edit/{{ $b->id }}" class="btn btn-xs btn-primary">edit</a>
-                                                    <a href="/admin/blog/destroy/{{ $b->id }}" class="btn btn-xs btn-danger">delete</a>
+                                                    <form class="btn-group">
+                                                            @if (Auth::user()->is_admin)
+                                                            {{-- @php
+                                                                if($b->published == 'Yes') {
+                                                                    $label = 'Draft';
+                                                                } else {
+                                                                    $label = 'Publish';
+                                                                }
+                                                            @endphp     --}}
+                                                             @php
+                                                             if($b->published == 'Yes') {                                                              
+                                                                 $label =  'Draft' ;
+                                                             } else {
+                                                                 $label = 'Publish';
+                                                             }
+                                                            @endphp    
+                                                            {{-- <form action="/admin/blog/publish" method="POST">
+                                                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                                                <input type="hidden" name="id" value="{{$b->id}}" />
+                                                                {{ method_field('put') }}
+                                                                <button class="btn btn-xs btn-warning">{{ $label }}</button>
+                                                                {{-- <a href="/admin/blog/publish" data-method="PUT" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-warning">{{ $label }}</a> --}}
+                                                            {{-- </form>     --}} 
+                                                            {{-- <input name="_method" type="hidden" value="PUT">     
+                                                            <input type="hidden" name="id" value="{{$b->id}}" /> 
+                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />                                  --}}
+                                                            <a href="/admin/blog/publish/{{ $b->id }}" class="btn btn-xs btn-warning">{{ $label }}</a>
+                                                            @endif
+                                                                <a href="/admin/blog/show/{{ $b->id }}" class="btn btn-xs btn-success"><span aria-hidden="true" class="icon_search-2"></span></a>
+                                                                <a href="/admin/blog/edit/{{ $b->id }}" class="btn btn-xs btn-primary"><span aria-hidden="true" class="icon_pencil"></span></a>
+                                                                <a href="/admin/blog/destroy/{{ $b->id }}" class="btn btn-xs btn-danger"><span aria-hidden="true" class="icon_trash"></span></a>
+                                                    </form>                                               
                                                 </td>
                                             </tr>                                            
                                             @endforeach

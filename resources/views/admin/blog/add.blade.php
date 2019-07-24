@@ -25,6 +25,8 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <input type="hidden" name="_method" value="POST" />
                                     </div>
+                                   
+                                   
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" name="title" class="form-control" id="title"
@@ -57,7 +59,10 @@
                                             @endforeach
                                         </select>
                                     </div>
-
+                                    <div class="form-group">
+                                        <input type="file" name="image" class="file-uploader form-group">                                      
+                                    </div>
+                                    
                                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                 </form>
                             </div>

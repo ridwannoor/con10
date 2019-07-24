@@ -13,7 +13,7 @@
                                 {{-- @foreach ($blogs as $b) --}}
                                    
                                 <div class="profile">
-                                    <img class="profile-image img-fluid" src="assets/images/profiles/profile-square-1-lg.png" alt="" />
+                                    <img class="profile-image img-fluid" src="{{ asset('/storage/admin/blog/'.$blog->image)}}" alt="" />
                                     <div class="meta-wrapper">
                                         <h3 class="title">{{ $blog->title }}<span class="pro-label label label-warning" >by {{ $blog->user->name }}</span></h3>
                                         <ul class="meta-list list-unstyled">

@@ -26,6 +26,18 @@
                                         <input type="hidden" name="_method" value="PUT" />
                                         <input type="hidden" name="id" value="{{$blogs->id}}" /> 
                                     </div>
+                                  
+                                    <div class="form-group form-row avatar">
+                                        <figure class="figure col-lg-2 col-md-3 col-12">
+                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/blog/'.$blogs->image)}}" alt="" />
+                                            {{-- <img class="rounded img-fluid" src="#" alt="" /> --}}
+                                        
+                                        </figure>
+                                        <div class="form-inline col-lg-10 col-md-9 col-12">
+                                            <input type="file" name="image" class="file-uploader float-left">
+                                            {{-- <button type="submit" class="btn btn-sm btn-default-alt float-left">Update Logo</button> --}}
+                                        </div>
+                                    </div>                                        
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" name="title" class="form-control" id="title"

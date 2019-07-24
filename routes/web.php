@@ -36,6 +36,14 @@ Route::get('/admin/feature', 'Admin\FeatureController@index');
 Route::get('/admin/feature/edit/{id}', 'Admin\FeatureController@edit');
 Route::put('/admin/feature/update', 'Admin\FeatureController@update');
 
+//Team
+Route::get('/admin/team', 'Admin\TeamController@index');
+Route::get('/admin/team/add', 'Admin\TeamController@create');
+Route::post('/admin/team/store', 'Admin\TeamController@store');
+Route::get('/admin/team/edit/{id}', 'Admin\TeamController@edit');
+Route::put('/admin/team/update', 'Admin\TeamController@update');
+Route::get('/admin/team/destroy/{id}', 'Admin\TeamController@destroy');
+
 //Services
 Route::get('/admin/service', 'Admin\ServiceController@index');
 Route::get('/admin/service/edit/{id}', 'Admin\ServiceController@edit');
