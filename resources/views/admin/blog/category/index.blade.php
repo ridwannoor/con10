@@ -29,7 +29,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Title</th>
-                                                <th>Content</th>
+                                                <th>Blog Count</th>
                                                 <th>Created At</th>
                                                 <th>Action</th>
                                             </tr>
@@ -42,7 +42,7 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $b->title }}</td>
-                                                <td>{{ $b->content }}</td>
+                                                <td>{{ $b->blog_count }}</td>
                                                 <td>{{ $b->created_at }}</td>
                                                 <td>
                                                     <a href="/admin/categorie/edit/{{ $b->id }}" class="btn btn-xs btn-primary">Edit</a>

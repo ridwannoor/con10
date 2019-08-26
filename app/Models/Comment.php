@@ -10,25 +10,27 @@ class Comment extends Model
 {
     protected $table ='comments';
     protected $fillable = [
-        'user_id', 
-        'post_id', 
-        'content'
+        'name', 
+        'email', 
+        'comment',
+        'approved',
+        'blog_id'
     ];
 
     // protected $dates = [
     //     'posted_at'
     // ];
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::creating(function ($comment) {
-            if(is_null($comment->author_id)) {
-                $comment->authot_id = auth()->user()->id;
-            }
-        });
-    }
+    //     static::creating(function ($comment) {
+    //         if(is_null($comment->blog_id)) {
+    //             $comment->blog_id = $blog()->id;
+    //         }
+    //     });
+    // }
 
     public function blog()
     {

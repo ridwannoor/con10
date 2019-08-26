@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\General;
 use App\Models\Slider;
-
+use App\Models\Blog;
 class HomeController extends Controller
 {
     /**
@@ -25,8 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = Blog::paginate(3);
         $sliders = Slider::all();
         $gens = General::all();
-        return view('home', compact('gens','sliders'));
+        return view('home', compact('gens','sliders', 'posts'));
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Categorie;
+use App\Models\Blog;
 
 class CategorieController extends Controller
 {
@@ -19,7 +21,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::all();
+        $categories = Categorie::withCount('blog')->get();
+        // dd($categories);
         return view('admin.blog.category.index', compact('categories'));
     }
 

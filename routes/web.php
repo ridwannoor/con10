@@ -74,3 +74,12 @@ Route::post('/admin/categorie/store', 'Admin\CategorieController@store');
 Route::get('/admin/categorie/edit/{id}', 'Admin\CategorieController@edit');
 Route::put('/admin/categorie/update', 'Admin\CategorieController@update');
 Route::get('/admin/categorie/destroy/{id}', 'Admin\CategorieController@destroy');
+
+
+//Category
+Route::get('/admin/comment', 'Admin\CommentController@index');
+Route::get('/admin/comment/add', 'Admin\CommentController@create');
+Route::post('/admin/comment/store', 'Admin\CommentController@store');
+Route::get('/admin/comment/edit/{id}', 'Admin\CommentController@edit');
+Route::put('/admin/comment/update', 'Admin\CommentController@update');
+Route::get('/admin/comment/destroy/{id}', 'Admin\CommentController@destroy');

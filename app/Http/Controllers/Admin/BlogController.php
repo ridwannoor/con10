@@ -10,6 +10,7 @@ use App\Models\Categorie;
 use App\Models\Tag;
 use App\Models\Comment;
 use App\Models\User;
+use Session;
 
 class BlogController extends Controller
 {
@@ -29,7 +30,7 @@ class BlogController extends Controller
         $categorie = Categorie::all();
         $tag = Tag::all();
         $comment = Comment::all();
-        $blogs = Blog::all();
+        $blogs = Blog::withCount('comment')->get();
         return view('admin.blog.index',compact('blogs','user','categorie','tag','comment'));
     }
 
@@ -113,12 +114,12 @@ class BlogController extends Controller
         $categorie = Categorie::all();
         $tags = Tag::all();
         $comment = Comment::all();
+        // $id = $blog->id;
         return view('admin.blog.show', compact('blog', 'categorie', 'tags', 'comment'));
     }
 
     public function publish($id)
-    {
-       
+    {       
         $blog = Blog::find($id);
         $blog->is_published = !$blog->is_published;
         $blog->save();  

@@ -9,7 +9,7 @@
                 <section class="module module-headings">
                     <div class="module-inner">
                         <div class="module-heading">
-                            <a href="/admin/blog/add" class="btn btn-xs btn-primary">Add Post</a>
+                            <a href="/admin/blog/add" class="btn btn-primary">Tambah</a>
                            {{--  <h3 class="module-title">Zero Configuration</h3> --}}
                             <ul class="actions list-inline">
                                 <li><a class="collapse-module" data-toggle="collapse" href="#content-1"
@@ -33,6 +33,7 @@
                                                 <th>Author</th>
                                                 <th>Category</th>
                                                 <th>Tag</th>
+                                                <th>Comment</th>
                                                 <th>Published</th>
                                                 <th>Action</th>
                                             </tr>
@@ -49,6 +50,7 @@
                                                 <td>{{ $b->user->name }}</td>
                                                 <td>{{ $b->categorie->title }}</td>
                                                 <td><span class="btn btn-xs btn-default">{{ $b->tags->implode('name', ', ') }}</span></td>
+                                                <td>{{ $b->comment_count }}</td>
                                                 <td>{{ $b->published }}</td>
                                                 <td>
                                                     <form class="btn-group">
