@@ -3,160 +3,180 @@
 @section('content-wrapper')
 <div id="content-wrapper" class="content-wrapper view view-account">
     <div class="container-fluid">
-        <h2 class="view-title">Feature</h2>
         <div class="row">
-            <div class="module-wrapper col-12">
+            <div class="module-wrapper masonry-item col-12">
                 <section class="module">
                     <div class="module-inner">
-                        <div class="side-bar">
-                            <div class="user-info">
-                                @foreach ($gens as $gen)
-                                <img class="img-profile rounded-circle img-fluid mx-auto"
-                                    src="{{ asset('/storage/admin/general/'.$gen->image)}}" alt="" />
-                                <ul class="meta list list-unstyled">
-                                    <li class="name">{{ $gen->name }}
-                                        {{-- <label class="label label-info">UX Designer</label> --}}
-                                    </li>
-                                    <li class="email"><a href="#">{{ $gen->email }}</a></li>
-                                    <li class="activity">{{ $gen->created_at }}</li>
-                                </ul>
-                                @endforeach
-                            </div>
-
-                            @include('admin.component.side-menu')
-                           
+                        <div class="module-heading">
+                            <h3 class="module-title">Features</h3>
+                            {{-- <ul class="actions list-inline">
+                                <li><a class="btn btn-xs btn-default" >Edit </a></li>
+                                <li><a class="close-module" href="#"><span aria-hidden="true" class="icon icon_close"></span></a></li>
+                            </ul> --}}
                         </div>
+                        <div class="module-content collapse show" id="content-5">
+                            <div class="module-content-inner pb-0">
+                                {{-- <h4 class="has-divider">Elegant Icons</h4> --}}
+                                <div role="tabpanel">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-tabs-theme-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" href="#section"
+                                                aria-controls="section" role="tab" data-toggle="tab"><span
+                                                    class="fs1 icon" aria-hidden="true"
+                                                    data-icon="&#x5a;"></span><br><span
+                                                    class="d-none d-sm-inline-block hidden-sm">Section</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#section-1"
+                                                aria-controls="section-1" role="tab" data-toggle="tab"><span
+                                                    class="fs1 icon" aria-hidden="true"
+                                                    data-icon="&#x5a;"></span><br><span
+                                                    class="d-none d-sm-inline-block hidden-sm">Section 1</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#section-2"
+                                                aria-controls="section-2" role="tab" data-toggle="tab"><span
+                                                    class="fs1 icon" aria-hidden="true"
+                                                    data-icon="&#x5a;"></span><br><span
+                                                    class="d-none d-sm-inline-block hidden-sm">Section 2</span></a></li>
+                                        <li class="nav-item last"><a class="nav-link" href="#section-3"
+                                                aria-controls="section-3" role="tab" data-toggle="tab"><span
+                                                    class="fs1 icon" aria-hidden="true"
+                                                    data-icon="&#x5a;"></span><br><span
+                                                    class="d-none d-sm-inline-block hidden-sm">Section 3</span></a></li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                            {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" />                                        --}}
+                                            {{-- <input type="hidden" name="id" value="{{$feature->id}}" />   --}}
+                                            {{-- <input type="hidden" name="_method" value="PUT" />  --}}
 
-                        <div class="content-panel">
-                            <h2 class="title">Feature<span class="pro-label badge badge-warning">PRO</span></h2>
+                                        <div role="tabpanel" class="tab-pane active" id="section">
+                                            <fieldset class="fieldset mb-3">
+                                                <div class="form-group form-row avatar">
+                                                    <figure class="figure col-lg-2 col-md-3 col-4">
+                                                        @foreach ($features as $feature)
+                                                        <img class="rounded img-fluid"
+                                                            src="{{ asset('/storage/admin/feature/'.$feature->image)}}"
+                                                            width="150px" height="150px" alt="" />
+                                                        @endforeach
+                                                    </figure>
+                                                </div>
 
-                            <form class="user-form">
-                                @foreach ($features as $feature)
-                                <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Section</h3>
-                                    <div class="form-group form-row avatar">
-                                        <figure class="figure col-lg-2 col-md-3 col-4">
-                                            {{-- <img class="rounded img-fluid" src="{{ asset('/storage/admin/feature/'.$feature->image)}}"
-                                            alt="" /> --}}
-                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/slider/'.$feature->image)}}" width="150px" height="150px" alt="" />
-                                        </figure>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                        <div class="col-sm-6">
-                                            <label class="form-control" id="title">{{ $feature->title }}</label>
-                                            {{-- <label class="form-control" id="title">{{ $features->title }}</label>
-                                            --}}
+                                                <div class="form-group form-row">
+                                                    <label for="title" class="col-sm-2 col-form-label">Title :</label>
+                                                    <div class="col-sm-6">
+                                                        <label for="title" class="col-form-label" id="title" name="title">{{ $feature->title }}</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-row">
+                                                    <label for="deskripsi"
+                                                        class="col-sm-2 col-form-label">Deskripsi :</label>
+                                                    <div class="col-sm-6">
+                                                       <label for="deskripsi"
+                                                        class="col-form-label">{{ $feature->deskripsi }}</label>                                                        
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                        <div class="col-sm-6">
-                                            <label class="form-control" id="deskripsi">{{ $feature->deskripsi }}</label>
-                                            {{-- <label class="form-control" id="deskripsi">{{ $features->deskripsi }}</label>
-                                            --}}
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Section 1</h3>
-                                    <div class="form-group form-row avatar">
-                                        <figure class="figure col-lg-2 col-md-3 col-12">
-                                            {{-- <img class="rounded img-fluid" src="{{ asset('/storage/admin/feature/'.$feature->image)}}"
-                                            alt="" /> --}}
-                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/slider/'.$feature->image1)}}" alt="" />
 
-                                        </figure>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        {{-- <div class="form-group row"> --}}
-                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                        <div class="col-sm-10">
-                                            <label class="form-control" id="title">{{ $feature->title1 }}</label>
-                                            {{-- <label class="form-control" id="title">{{ $feature->title1 }}</label>
-                                            --}}
+                                        <div role="tabpanel" class="tab-pane" id="section-1">
+                                                <fieldset class="fieldset mb-3">
+                                                        <div class="form-group form-row avatar">
+                                                            <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                @foreach ($features as $feature)
+                                                                <img class="rounded img-fluid"
+                                                                    src="{{ asset('/storage/admin/feature/'.$feature->image1)}}"
+                                                                    width="150px" height="150px" alt="" />
+                                                                @endforeach
+                                                            </figure>
+                                                        </div>
+        
+                                                        <div class="form-group form-row">
+                                                            <label for="title" class="col-sm-2 col-form-label">Title :</label>
+                                                            <div class="col-sm-6">
+                                                                <label for="title" class="col-form-label" id="title1" name="title1">{{ $feature->title1 }}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-row">
+                                                            <label for="deskripsi"
+                                                                class="col-sm-2 col-form-label">Deskripsi :</label>
+                                                            <div class="col-sm-6">
+                                                               <label for="deskripsi"
+                                                                class="col-form-label"  name="deskripsi1">{{ $feature->deskripsi1 }}</label>                                                        
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                        <div class="col-sm-10">
-                                            <label class="form-control" id="deskripsi">{{ $feature->deskripsi1 }}</label>
-                                            {{-- <label class="form-control" id="deskripsi">{{ $feature->deskripsi1 }}</label>
-                                            --}}
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Section 2</h3>
-                                    <div class="form-group form-row avatar">
-                                        <figure class="figure col-lg-2 col-md-3 col-12">                                                
-                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/slider/'.$feature->image1)}}" alt="" />
 
-                                        </figure>
+                                        <div role="tabpanel" class="tab-pane" id="section-2">
+                                                <fieldset class="fieldset mb-3">
+                                                        <div class="form-group form-row avatar">
+                                                            <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                @foreach ($features as $feature)
+                                                                <img class="rounded img-fluid"
+                                                                    src="{{ asset('/storage/admin/feature/'.$feature->image2)}}"
+                                                                    width="150px" height="150px" alt="" />
+                                                                @endforeach
+                                                            </figure>
+                                                        </div>
+        
+                                                        <div class="form-group form-row">
+                                                            <label for="title" class="col-sm-2 col-form-label">Title :</label>
+                                                            <div class="col-sm-6">
+                                                                <label for="title" class="col-form-label" id="title2" name="title2">{{ $feature->title2 }}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-row">
+                                                            <label for="deskripsi"
+                                                                class="col-sm-2 col-form-label">Deskripsi :</label>
+                                                            <div class="col-sm-6">
+                                                               <label for="deskripsi2"
+                                                                class="col-form-label" name="deskripsi2">{{ $feature->deskripsi2 }}</label>                                                        
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                        </div>
 
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                        <div class="col-sm-10">
-                                            {{-- <label class="form-control" id="title" >{{ $feature->title2 }}</label>
-                                            --}}
-                                            <label class="form-control" id="title">{{ $feature->title2 }}</label>
+                                        <div role="tabpanel" class="tab-pane" id="section-3">
+                                                <fieldset class="fieldset mb-3">
+                                                        <div class="form-group form-row avatar">
+                                                            <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                @foreach ($features as $feature)
+                                                                <img class="rounded img-fluid"
+                                                                    src="{{ asset('/storage/admin/feature/'.$feature->image3)}}"
+                                                                    width="150px" height="150px" alt="" />
+                                                                @endforeach
+                                                            </figure>
+                                                        </div>
+        
+                                                        <div class="form-group form-row">
+                                                            <label for="title" class="col-sm-2 col-form-label">Title :</label>
+                                                            <div class="col-sm-6">
+                                                                <label for="title" class="col-form-label" id="title3" name="title3">{{ $feature->title3 }}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-row">
+                                                            <label for="deskripsi"
+                                                                class="col-sm-2 col-form-label">Deskripsi :</label>
+                                                            <div class="col-sm-6">
+                                                               <label for="deskripsi3"
+                                                                class="col-form-label" name="deskripsi3">{{ $feature->deskripsi3 }}</label>                                                        
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                        <div class="col-sm-10">
-                                            {{-- <label class="form-control" id="deskripsi">{{ $feature->deskripsi2 }}</label>
-                                            --}}
-                                            <label class="form-control" id="deskripsi">{{ $feature->deskripsi2 }}</label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Section 3</h3>
-                                    <div class="form-group form-row avatar">
-                                        <figure class="figure col-lg-2 col-md-3 col-12">
-                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/feature/'.$feature->image)}}"
-                                            alt="" />
-                                            {{-- <img class="rounded img-fluid" src="#" alt="" /> --}}
-
-                                        </figure>
-
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                        <div class="col-sm-10">
-                                            <label class="form-control" id="title" >{{ $feature->title3 }}</label>                                           
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-row">
-                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                        <div class="col-sm-10">
-                                            <label class="form-control" id="deskripsi">{{ $feature->deskripsi3 }}</label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <hr>
-                                <div class="form-group form-row">
-                                    <div class="col-xl-10 col-lg-9 col-12 offset-lg-2 offset-md-3">
-                                        <a href="/admin/feature/edit/{{ $feature->id }}" class="btn btn-primary">Edit Feature</a>
-                                        {{-- <input class="btn btn-primary" type="submit" name="submit" value="Edit General"> --}}
+                                       
+                                        
+                                        {{-- @endforeach --}}
                                     </div>
                                 </div>
-
-                                @endforeach
-                            </form>
+                            </div>
+                            <div>
+                                <a href="/admin/feature/edit/{{ $feature->id }}" class="btn btn-primary">Update</a>
+                            </div>
                         </div>
 
                     </div>
-
                 </section>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 @endsection

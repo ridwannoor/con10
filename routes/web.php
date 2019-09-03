@@ -21,10 +21,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin/dashboard', 'Admin\DashboardController@index');
 // Route::resource('admin/general', 'Admin\GeneralController');
 
+//General
 Route::get('/admin/general', 'Admin\GeneralController@index');
 Route::get('/admin/general/edit/{id}', 'Admin\GeneralController@edit');
 Route::put('/admin/general/update', 'Admin\GeneralController@update');
 
+//Slider
 Route::get('/admin/slider', 'Admin\SliderController@index');
 Route::get('/admin/slider/add', 'Admin\SliderController@create');
 Route::post('/admin/slider/store', 'Admin\SliderController@store');
@@ -32,6 +34,7 @@ Route::get('/admin/slider/edit/{id}', 'Admin\SliderController@edit');
 Route::put('/admin/slider/update', 'Admin\SliderController@update');
 Route::get('/admin/slider/destroy/{id}', 'Admin\SliderController@destroy');
 
+//Feature
 Route::get('/admin/feature', 'Admin\FeatureController@index');
 Route::get('/admin/feature/edit/{id}', 'Admin\FeatureController@edit');
 Route::put('/admin/feature/update', 'Admin\FeatureController@update');
@@ -76,7 +79,7 @@ Route::put('/admin/categorie/update', 'Admin\CategorieController@update');
 Route::get('/admin/categorie/destroy/{id}', 'Admin\CategorieController@destroy');
 
 
-//Category
+//Comment
 Route::get('/admin/comment', 'Admin\CommentController@index');
 Route::get('/admin/comment/add', 'Admin\CommentController@create');
 Route::post('/admin/comment/store', 'Admin\CommentController@store');

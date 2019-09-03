@@ -3,176 +3,239 @@
 @section('content-wrapper')
 <div id="content-wrapper" class="content-wrapper view view-account">
     <div class="container-fluid">
-        <h2 class="view-title">My Account</h2>
         <div class="row">
-            <div class="module-wrapper col-12">
+            <div class="module-wrapper masonry-item col-12">
                 <section class="module">
                     <div class="module-inner">
-                        <div class="side-bar">
-                            <div class="user-info">
-                                @foreach ($gens as $gen)
-                                    
-                                <img class="img-profile rounded-circle img-fluid mx-auto" src="{{ asset('/storage/admin/general/'.$gen->image)}}" alt="" />
-                                <ul class="meta list list-unstyled">
-                                    <li class="name">{{ $gen->name }}
-                                        {{-- <label class="label label-info">UX Designer</label> --}}
-                                    </li>
-                                    <li class="email"><a href="#">{{ $gen->email }}</a></li>
-                                    <li class="activity">{{ $gen->created_at }}</li>
-                                </ul>
-                                
-                                @endforeach
-                            </div>
-                            
-                            <nav class="side-menu">
-                                <ul class="nav">
-                                    <li><a href="/admin/general"><span class="pe-icon pe-7s-user icon"></span>General</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-config icon"></span> Topbar</a></li>
-                                    <li><a href="/admin/slider"><span class="pe-icon pe-7s-credit icon"></span> Slider</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-chat icon"></span> Feature</a></li>                                    
-                                    <li><a href="#"><span class="pe-icon pe-7s-pendrive icon"></span> Service</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-clock icon"></span> Team</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-config icon"></span> Pricing</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-credit icon"></span> Work</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-chat icon"></span> Testimonial</a></li>                                    
-                                    <li><a href="#"><span class="pe-icon pe-7s-pendrive icon"></span> Blog</a></li>
-                                    <li><a href="#"><span class="pe-icon pe-7s-clock icon"></span> Contact</a></li>
-                                </ul>
-                            </nav>
-                            
+                        <div class="module-heading">
+                            <h3 class="module-title">Features</h3>
+                            {{-- <ul class="actions list-inline">
+                                <li><a class="btn btn-xs btn-default" >Edit </a></li>
+                                <li><a class="close-module" href="#"><span aria-hidden="true" class="icon icon_close"></span></a></li>
+                            </ul> --}}
                         </div>
-                        
-                        <div class="content-panel">
-                            <h2 class="title">Feature<span class="pro-label badge badge-warning">PRO</span></h2>
-                            <form class="user-form">
-                                @foreach ($features as $feature)
-                                <fieldset class="fieldset mb-3">
-                                    <h3 class="fieldset-title">Section</h3>
-                                    <div class="form-group form-row">  
-                                        {{-- <div class="form-group row"> --}}
-                                            <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="title" value="{{ $feature->title }}">
+                        <div class="module-content collapse show" id="content-5">
+                            <div class="module-content-inner pb-0">
+                                <form action="/admin/feature/update" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <input type="hidden" name="id" value="{{$feature->id}}" />
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    {{-- <h4 class="has-divider">Elegant Icons</h4> --}}
+                                    <div role="tabpanel">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-tabs-theme-3" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active" href="#section"
+                                                    aria-controls="section" role="tab" data-toggle="tab"><span
+                                                        class="fs1 icon" aria-hidden="true"
+                                                        data-icon="&#x5a;"></span><br><span
+                                                        class="d-none d-sm-inline-block hidden-sm">Section</span></a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#section-1"
+                                                    aria-controls="section-1" role="tab" data-toggle="tab"><span
+                                                        class="fs1 icon" aria-hidden="true"
+                                                        data-icon="&#x5a;"></span><br><span
+                                                        class="d-none d-sm-inline-block hidden-sm">Section 1</span></a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#section-2"
+                                                    aria-controls="section-2" role="tab" data-toggle="tab"><span
+                                                        class="fs1 icon" aria-hidden="true"
+                                                        data-icon="&#x5a;"></span><br><span
+                                                        class="d-none d-sm-inline-block hidden-sm">Section 2</span></a>
+                                            </li>
+                                            <li class="nav-item last"><a class="nav-link" href="#section-3"
+                                                    aria-controls="section-3" role="tab" data-toggle="tab"><span
+                                                        class="fs1 icon" aria-hidden="true"
+                                                        data-icon="&#x5a;"></span><br><span
+                                                        class="d-none d-sm-inline-block hidden-sm">Section 3</span></a>
+                                            </li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+
+
+                                            <div role="tabpanel" class="tab-pane active" id="section">
+
+                                                <fieldset class="fieldset mb-3">
+                                                    <div class="form-group form-row avatar">
+                                                        <figure class="figure col-lg-2 col-md-3 col-4">
+                                                            {{-- @foreach ($features as $feature) --}}
+                                                            <img class="rounded img-fluid"
+                                                                src="{{ asset('/storage/admin/feature/'.$feature->image)}}"
+                                                                width="150px" height="150px" alt="" />
+                                                            {{-- @endforeach --}}
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">Title
+                                                            :</label>
+                                                        <div class="col-sm-6">
+                                                            {{-- @foreach ($features as $feature) --}}
+                                                            {{-- <label for="title" class="col-form-label" id="title" name="title">{{ $feature->title }}</label>
+                                                            --}}
+
+
+                                                            {{-- @endforeach --}}
+                                                            <input type="text" class="form-control" id="title"
+                                                                name="title" value="{{ $feature->title }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi
+                                                            :</label>
+                                                        <div class="col-sm-6">
+                                                            {{-- <label for="deskripsi" class="form-control" name="deskripsi" id="deskripsi" >{{ $feature->deskripsi }}</label>
+                                                            --}}
+                                                            {{-- <label for="deskripsi"
+                                                        class="col-form-label">{{ $feature->deskripsi }}</label> --}}
+                                                            <textarea class="form-control" name="deskripsi"
+                                                                id="deskripsi" cols="30"
+                                                                rows="10">{{ $feature->deskripsi }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">File
+                                                            Upload</label>
+                                                        <input type="file"  id="image" name="image"
+                                                            class="file-uploader float-left">
+                                                    </div>
+                                                </fieldset>
+                                               
+
                                             </div>
+
+                                            <div role="tabpanel" class="tab-pane" id="section-1">
+
+                                                <fieldset class="fieldset mb-3">
+                                                    <div class="form-group form-row avatar">
+                                                        <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                <img class="rounded img-fluid"
+                                                                src="{{ asset('/storage/admin/feature/'.$feature->image1)}}"
+                                                                width="150px" height="150px" alt="" />
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" id="title1"
+                                                                name="title1" value="{{ $feature->title1 }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="deskripsi"
+                                                            class="col-sm-2 col-form-label">Deskripsi</label>
+                                                        <div class="col-sm-6">
+                                                            <textarea class="form-control" name="deskripsi1"
+                                                                id="deskripsi1" cols="30"
+                                                                rows="10">{{ $feature->deskripsi1 }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">File
+                                                            Upload</label>
+                                                        <input type="file"  id="image1" name="image1"
+                                                            class="file-uploader float-left">
+                                                    </div>
+                                                </fieldset>
+                                                
+                                            </div>
+
+                                            <div role="tabpanel" class="tab-pane" id="section-2">
+
+                                                <fieldset class="fieldset mb-3">
+                                                    <div class="form-group form-row avatar">
+                                                        <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                <img class="rounded img-fluid"
+                                                                src="{{ asset('/storage/admin/feature/'.$feature->image2)}}"
+                                                                width="150px" height="150px" alt="" />
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" id="title2"
+                                                                name="title2" value="{{ $feature->title2 }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="deskripsi"
+                                                            class="col-sm-2 col-form-label">Deskripsi</label>
+                                                        <div class="col-sm-6">
+                                                            <textarea class="form-control" name="deskripsi2"
+                                                                id="deskripsi2" cols="30"
+                                                                rows="10">{{ $feature->deskripsi2 }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">File
+                                                            Upload</label>
+                                                        <input type="file"  id="image2" name="image2"
+                                                            class="file-uploader float-left">
+                                                    </div>
+                                                </fieldset>
+                                               
+                                            </div>
+
+                                            <div role="tabpanel" class="tab-pane" id="section-3">
+
+                                                <fieldset class="fieldset mb-3">
+                                                    <div class="form-group form-row avatar">
+                                                        <figure class="figure col-lg-2 col-md-3 col-4">
+                                                                <img class="rounded img-fluid"
+                                                                src="{{ asset('/storage/admin/feature/'.$feature->image3)}}"
+                                                                width="150px" height="150px" alt="" />
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" id="title3"
+                                                                name="title3" value="{{ $feature->title3 }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="deskripsi"
+                                                            class="col-sm-2 col-form-label">Deskripsi</label>
+                                                        <div class="col-sm-6">
+                                                            <textarea class="form-control" name="deskripsi3"
+                                                                id="deskripsi3" cols="30"
+                                                                rows="10">{{ $feature->deskripsi3 }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-row">
+                                                        <label for="title" class="col-sm-2 col-form-label">File
+                                                            Upload</label>
+                                                        <input type="file" id="image3" name="image3"
+                                                            class="file-uploader float-left">
+                                                    </div>
+                                                </fieldset>
+                                               
+                                            </div>
+
+                                            {{-- </form> --}}
+                                            {{-- @endforeach --}}
+                                        </div>
                                     </div>
                                     <div class="form-group form-row">
-                                            <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="deskripsi" value="{{ $feature->deskripsi }}">
+                                            <div class="btn-group">
+                                                <input class="btn btn-primary" type="submit" name="submit"
+                                                    value="Update">
+                                                <a href="" class="btn btn-warning">Back</a>
                                             </div>
-                                    </div>
-                                    <div class="form-group form-row avatar">
-                                            <figure class="figure col-lg-2 col-md-3 col-12">
-                                                <img class="rounded img-fluid" src="{{ asset('/storage/admin/general/'.$feature->image)}}" alt="" />
-                                               
-                                            </figure>
-                                            <div class="form-inline col-lg-10 col-md-9 col-12">
-                                                <input type="file" name="image" class="file-uploader float-left">
-                                                {{-- <button type="submit" class="btn btn-sm btn-default-alt float-left">Update Image</button> --}}
-                                            </div>
-                                        </div>                                
-                                </fieldset>
-                                <fieldset class="fieldset mb-3">
-                                        <h3 class="fieldset-title">Section 1</h3>
-                                        <div class="form-group form-row">  
-                                            {{-- <div class="form-group row"> --}}
-                                                <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="title" value="{{ $feature->title1 }}">
-                                                </div>
                                         </div>
-                                        <div class="form-group form-row">
-                                                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="deskripsi"  value="{{ $feature->deskripsi1 }}">
-                                                </div>
-                                        </div>
-                                        <div class="form-group form-row avatar">
-                                                <figure class="figure col-lg-2 col-md-3 col-12">
-                                                    <img class="rounded img-fluid" src="{{ asset('/storage/admin/general/'.$feature->image1)}}" alt="" />
-                                                    {{-- <img class="rounded img-fluid" src="#" alt="" /> --}}
-                                                
-                                                </figure>
-                                                <div class="form-inline col-lg-10 col-md-9 col-12">
-                                                    <input type="file" name="image" class="file-uploader float-left">
-                                                    {{-- <button type="submit" class="btn btn-sm btn-default-alt float-left">Update Image</button> --}}
-                                                </div>
-                                            </div>                                
-                                    </fieldset>
-                                    <fieldset class="fieldset mb-3">
-                                            <h3 class="fieldset-title">Section 2</h3>
-                                            <div class="form-group form-row">  
-                                                {{-- <div class="form-group row"> --}}
-                                                    <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="title" value="{{ $feature->title2 }}">
-                                                    </div>
-                                            </div>
-                                            <div class="form-group form-row">
-                                                    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="deskripsi" value="{{ $feature->deskripsi2 }}">
-                                                    </div>
-                                            </div>
-                                            <div class="form-group form-row avatar">
-                                                    <figure class="figure col-lg-2 col-md-3 col-12">
-                                                        <img class="rounded img-fluid" src="{{ asset('/storage/admin/general/'.$feature->image2)}}" alt="" />
-                                                        {{-- <img class="rounded img-fluid" src="#" alt="" /> --}}
-                                                    
-                                                    </figure>
-                                                    <div class="form-inline col-lg-10 col-md-9 col-12">
-                                                        <input type="file" name="image" class="file-uploader float-left">
-                                                        {{-- <button type="submit" class="btn btn-sm btn-default-alt float-left">Update Image</button> --}}
-                                                    </div>
-                                                </div>                                
-                                        </fieldset>
-                                        <fieldset class="fieldset mb-3">
-                                                <h3 class="fieldset-title">Section 3</h3>
-                                                <div class="form-group form-row">  
-                                                    {{-- <div class="form-group row"> --}}
-                                                        <label for="title" class="col-sm-2 col-form-label">Title</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="title" value="{{ $feature->title3 }}">
-                                                        </div>
-                                                </div>
-                                                <div class="form-group form-row">
-                                                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="deskripsi" value="{{ $feature->deskripsi3 }}">
-                                                        </div>
-                                                </div>
-                                                <div class="form-group form-row avatar">
-                                                        <figure class="figure col-lg-2 col-md-3 col-12">
-                                                            <img class="rounded img-fluid" src="{{ asset('/storage/admin/general/'.$feature->image3)}}" alt="" />
-                                                            {{-- <img class="rounded img-fluid" src="#" alt="" /> --}}
-                                                        
-                                                        </figure>
-                                                        <div class="form-inline col-lg-10 col-md-9 col-12">
-                                                            <input type="file" name="image" class="file-uploader float-left">
-                                                            {{-- <button type="submit" class="btn btn-sm btn-default-alt float-left">Update Image</button> --}}
-                                                        </div>
-                                                    </div>                                
-                                            </fieldset>
-                                <hr>  
-                                <div class="form-group form-row">
-                                    <div class="col-xl-10 col-lg-9 col-12 offset-lg-2 offset-md-3">
-                                        <a href="#" class="btn btn-primary">Simpan Feature</a>
-                                        {{-- <input class="btn btn-primary" type="submit" name="submit" value="Edit General"> --}}
-                                    </div>
-                                </div>
-                                @endforeach
-                            </form>
+
+                                </form>
+                            </div>
+
                         </div>
-                        
+
                     </div>
-                    
                 </section>
-                
             </div>
-            
         </div>
-        
     </div>
-    
 </div>
-@endsection 
+@endsection

@@ -152,9 +152,9 @@
 
           <!-- Nav Right -->
           <div class="nav__right">
-            <div class="nav_right-item">
+            {{-- <div class="nav_right-item">
               <a href="http://" class="entry" >Login</a>
-            </div>
+            </div> --}}
             <!-- Search -->
             <div class="nav__right-item nav__search">
               <a href="#" class="nav__search-trigger" id="nav__search-trigger">

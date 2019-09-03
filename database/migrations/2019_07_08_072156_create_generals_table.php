@@ -19,6 +19,7 @@ class CreateGeneralsTable extends Migration
             $table->string('image')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('alamat')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();

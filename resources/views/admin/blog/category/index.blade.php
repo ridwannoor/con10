@@ -44,9 +44,11 @@
                                                 <td>{{ $b->title }}</td>
                                                 <td>{{ $b->blog_count }}</td>
                                                 <td>{{ $b->created_at }}</td>
-                                                <td>
-                                                    <a href="/admin/categorie/edit/{{ $b->id }}" class="btn btn-xs btn-primary">Edit</a>
-                                                    <a href="/admin/categorie/destroy/{{ $b->id }}" class="btn btn-xs btn-danger">Delete</a>
+                                                <td width = '50px'>
+                                                    <div class="btn-group">
+                                                        <a href="/admin/categorie/edit/{{ $b->id }}" class="btn btn-xs btn-primary">Edit</a>
+                                                        <a href="/admin/categorie/destroy/{{ $b->id }}" class="btn btn-xs btn-danger">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>                                            
                                             @endforeach

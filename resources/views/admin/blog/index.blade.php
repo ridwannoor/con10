@@ -52,7 +52,7 @@
                                                 <td><span class="btn btn-xs btn-default">{{ $b->tags->implode('name', ', ') }}</span></td>
                                                 <td>{{ $b->comment_count }}</td>
                                                 <td>{{ $b->published }}</td>
-                                                <td>
+                                                <td width = '100px'>
                                                     <form class="btn-group">
                                                             @if (Auth::user()->is_admin)
                                                             {{-- @php

@@ -46,23 +46,26 @@
                                 <span class="nav-label">General</span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="/admin/topbar">
                                 <span class="nav-label">Topbar</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="/admin/slider">
                                 <span class="nav-label">Slider</span>
                             </a>
                         </li>
                         <li>
+                            {{-- @foreach ($features as $feature) --}}
                             <a href="/admin/feature">
                                 <span class="nav-label">Feature</span>
                             </a>
+                            {{-- @endforeach --}}
+                            
                         </li>
                         <li>
-                            <a href="/admin/services">
+                            <a href="/admin/service">
                                 <span class="nav-label">Services</span>
                             </a>
                         </li>
